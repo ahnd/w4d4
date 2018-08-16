@@ -1,0 +1,20 @@
+<h1> Create an account: </h1>
+
+<form class="form" action="<%=users_url%>" method="post">
+  <%= auth_token %>
+
+  <p>
+    <label>Email:
+      <input type="text" name="user[email]" value="">
+    </label>
+  </p>
+  <p>
+    <label>Password:
+      <input type="password" name="user[password]" value="">
+    </label>
+  </p>
+  <input type="submit" name="" value="Create my account">
+</form>
+
+<br>
+<a class='button' href=<%= new_session_url %> >Sign-in</a>

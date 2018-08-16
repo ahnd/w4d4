@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MusicApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="/css/master.css">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <ul><%= link_to "Home",   '#' %></ul>
+            <ul><%= link_to "Help",   '#' %></ul>
+            <ul><%= link_to "Contact Us", '#' %></ul>
+
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <% if logged_in? %>
+      <p>Signed in as: <%= current_user.email %></p>
+      <form action=<%= session_url %> method="post">
+        <input type="hidden" name="_method" value="delete">
+        <%= auth_token %>
+        <input type="submit" value="Log out">
+      </form>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>
